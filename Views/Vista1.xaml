@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="jgarcesT3.Views.Vista1"
+             Title="Vista1">
+    <ContentPage.Resources>
+        <Style x:Key="estilolabel" TargetType="Label">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="TextColor" Value="Blue"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
+    </ContentPage.Resources>
+    <VerticalStackLayout Spacing="20" Padding="20">
+        <Label 
+            Text="Taller Semana 3"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontSize="20"
+            TextColor="Red"/>
+
+        <Picker
+            x:Name="pkid"
+            Title="Seleccione su tipo de identificación">
+            <Picker.Items>
+                <x:String>CI</x:String>
+                <x:String>RUC</x:String>
+                <x:String>Pasaporte</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <Entry x:Name="txtidentificacion"
+               Placeholder="Ingrese su identificación"
+               TextChanged="txtidentificacion_TextChanged"/>
+
+        <Entry x:Name="txtnombre"
+               Placeholder="Ingrese su nombre"/>
+
+        <Entry x:Name="txtapellido"
+               Placeholder="Ingrese su apellido"/>
+
+
+        <Label 
+                Text="Fecha de Registro"
+                Grid.Row="0"
+                Grid.Column="0"/>
+
+        <DatePicker
+               x:Name="pkfecha"
+               Format="dd/MM/yyyy"
+               Grid.Row="0"
+               Grid.Column="1"/>
+
+        <Entry x:Name="txtcorreo"
+               Placeholder="Ingrese su correo"/>
+
+        <Entry x:Name="txtsalario"
+               Placeholder="Ingrese su salario"/>
+
+        <Button x:Name="btnGuardar"
+                Text="Mostrar Contacto Registrado"
+                Clicked="btnGuardar_Clicked"/>
+
+    </VerticalStackLayout>
+</ContentPage>
