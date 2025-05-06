@@ -19,7 +19,7 @@ public partial class Vista2 : ContentPage
     {
         InitializeComponent();
 
-        // Almacenar la informaci髇 recibida
+        // Almacenar la informaci贸n recibida
         this.tipoIdentificacion = tipoId;
         this.identificacion = id;
         this.nombres = nombres;
@@ -35,7 +35,7 @@ public partial class Vista2 : ContentPage
 
     private void CargarDatos()
     {
-        // Mostrar informaci髇 del contacto en los Labels
+        // Mostrar informaci贸n del contacto en los Labels
         lblTipoId.Text = tipoIdentificacion;
         lblIdentificacion.Text = identificacion;
         lblNombres.Text = nombres;
@@ -58,13 +58,13 @@ public partial class Vista2 : ContentPage
             // Obtener la ruta de almacenamiento
             string descargas = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
 
-            string rutaArchivo = Path.Combine(carpetaDescargas, $"Contacto_{identificacion}.txt");
+            string rutaArchivo = Path.Combine(descargas, $"Contacto_{identificacion}.txt");
 
             // Escribir el archivo
             File.WriteAllText(rutaArchivo, contenido);
 
 
-            await DisplayAlert("蓌ito", $"Archivo guardado exitosamente en:\n{rutaArchivo}", "Aceptar");
+            await DisplayAlert("脡xito", $"Archivo guardado exitosamente en:\n{rutaArchivo}", "Aceptar");
         }
         catch (Exception ex)
         {
@@ -77,22 +77,22 @@ public partial class Vista2 : ContentPage
         // Crear un StringBuilder para construir el contenido del archivo
         StringBuilder sb = new StringBuilder();
 
-        sb.AppendLine("===== INFORMACI覰 DEL CONTACTO =====");
+        sb.AppendLine("===== INFORMACI脫N DEL CONTACTO =====");
         sb.AppendLine();
 
         sb.AppendLine("--- DATOS PERSONALES ---");
-        sb.AppendLine($"Tipo de Identificaci髇: {tipoIdentificacion}");
-        sb.AppendLine($"N鷐ero de Identificaci髇: {identificacion}");
+        sb.AppendLine($"Tipo de Identificaci贸n: {tipoIdentificacion}");
+        sb.AppendLine($"N煤mero de Identificaci贸n: {identificacion}");
         sb.AppendLine($"Nombres: {nombres}");
         sb.AppendLine($"Apellidos: {apellidos}");
         sb.AppendLine();
 
-        sb.AppendLine("--- INFORMACI覰 DE CONTACTO ---");
+        sb.AppendLine("--- INFORMACI脫N DE CONTACTO ---");
         sb.AppendLine($"Fecha de Registro: {fechaRegistro:dd/MM/yyyy}");
-        sb.AppendLine($"Correo Electr髇ico: {correo}");
+        sb.AppendLine($"Correo Electr贸nico: {correo}");
         sb.AppendLine();
 
-        sb.AppendLine("--- INFORMACI覰 SALARIAL ---");
+        sb.AppendLine("--- INFORMACI脫N SALARIAL ---");
         sb.AppendLine($"Salario Mensual: {salario:C}");
         sb.AppendLine($"Aporte al IESS (9.45%): {aporteIESS:C}");
         sb.AppendLine();
