@@ -2,9 +2,143 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="jgarcesT3.Views.Vista2"
-             Title="Vista2">
-    <VerticalStackLayout Spacing="20" Padding="20">
-        
+             Title="Detalles del Contacto">
 
-    </VerticalStackLayout>
+	<!-- Recursos y Estilos Explícitos -->
+	<ContentPage.Resources>
+		<!-- Estilo para etiquetas de título -->
+		<Style x:Key="TituloStyle" TargetType="Label">
+			<Setter Property="FontSize" Value="22" />
+			<Setter Property="TextColor" Value="DarkGreen" />
+			<Setter Property="FontAttributes" Value="Bold" />
+			<Setter Property="HorizontalTextAlignment" Value="Center" />
+			<Setter Property="Margin" Value="0,5,0,15" />
+		</Style>
+
+		<!-- Estilo para etiquetas de campo -->
+		<Style x:Key="CampoLabelStyle" TargetType="Label">
+			<Setter Property="FontSize" Value="16" />
+			<Setter Property="TextColor" Value="DarkGreen" />
+			<Setter Property="FontAttributes" Value="Bold" />
+			<Setter Property="Margin" Value="0,5,0,0" />
+		</Style>
+
+		<!-- Estilo para valores de campo -->
+		<Style x:Key="ValorLabelStyle" TargetType="Label">
+			<Setter Property="FontSize" Value="16" />
+			<Setter Property="TextColor" Value="DarkBlue" />
+			<Setter Property="Margin" Value="10,0,0,5" />
+		</Style>
+
+		<!-- Estilo para Frame -->
+		<Style x:Key="CardStyle" TargetType="Frame">
+			<Setter Property="BorderColor" Value="LightGray" />
+			<Setter Property="CornerRadius" Value="10" />
+			<Setter Property="Margin" Value="0,10,0,10" />
+			<Setter Property="Padding" Value="15" />
+			<Setter Property="HasShadow" Value="True" />
+		</Style>
+
+		<!-- Estilo para botones -->
+		<Style x:Key="BotonStyle" TargetType="Button">
+			<Setter Property="FontSize" Value="16" />
+			<Setter Property="TextColor" Value="White" />
+			<Setter Property="BackgroundColor" Value="ForestGreen" />
+			<Setter Property="Margin" Value="0,10,0,0" />
+			<Setter Property="CornerRadius" Value="10" />
+			<Setter Property="Padding" Value="10" />
+		</Style>
+
+		<!-- Estilo para sección de aporte -->
+		<Style x:Key="AporteFrameStyle" TargetType="Frame">
+			<Setter Property="BorderColor" Value="DarkGreen" />
+			<Setter Property="CornerRadius" Value="10" />
+			<Setter Property="Margin" Value="0,10,0,10" />
+			<Setter Property="Padding" Value="15" />
+			<Setter Property="HasShadow" Value="True" />
+		</Style>
+
+		<Style x:Key="AporteTituloStyle" TargetType="Label">
+			<Setter Property="FontSize" Value="18" />
+			<Setter Property="TextColor" Value="DarkGreen" />
+			<Setter Property="FontAttributes" Value="Bold" />
+			<Setter Property="HorizontalTextAlignment" Value="Center" />
+			<Setter Property="Margin" Value="0,0,0,10" />
+		</Style>
+
+		<Style x:Key="AporteValorStyle" TargetType="Label">
+			<Setter Property="FontSize" Value="20" />
+			<Setter Property="TextColor" Value="Red" />
+			<Setter Property="FontAttributes" Value="Bold" />
+			<Setter Property="HorizontalTextAlignment" Value="Center" />
+		</Style>
+	</ContentPage.Resources>
+
+	<ScrollView>
+		<VerticalStackLayout Padding="20">
+			<!-- Cabecera con título -->
+			<Label
+                Text="Información del Contacto"
+                Style="{StaticResource TituloStyle}"
+                Margin="0,0,0,20"/>
+
+			<!-- Tarjeta de información personal -->
+			<Frame Style="{StaticResource CardStyle}">
+				<VerticalStackLayout>
+					<Label Text="Datos Personales" Style="{StaticResource AporteTituloStyle}"/>
+
+					<Label Text="Tipo de Identificación:" Style="{StaticResource CampoLabelStyle}"/>
+					<Label x:Name="lblTipoId" Style="{StaticResource ValorLabelStyle}"/>
+
+					<Label Text="Número de Identificación:" Style="{StaticResource CampoLabelStyle}"/>
+					<Label x:Name="lblIdentificacion" Style="{StaticResource ValorLabelStyle}"/>
+
+					<Label Text="Nombres:" Style="{StaticResource CampoLabelStyle}"/>
+					<Label x:Name="lblNombres" Style="{StaticResource ValorLabelStyle}"/>
+
+					<Label Text="Apellidos:" Style="{StaticResource CampoLabelStyle}"/>
+					<Label x:Name="lblApellidos" Style="{StaticResource ValorLabelStyle}"/>
+				</VerticalStackLayout>
+			</Frame>
+
+			<!-- Tarjeta de información de contacto -->
+			<Frame Style="{StaticResource CardStyle}">
+				<VerticalStackLayout>
+					<Label Text="Información de Contacto" Style="{StaticResource AporteTituloStyle}"/>
+
+					<Label Text="Fecha de Registro:" Style="{StaticResource CampoLabelStyle}"/>
+					<Label x:Name="lblFecha" Style="{StaticResource ValorLabelStyle}"/>
+
+					<Label Text="Correo Electrónico:" Style="{StaticResource CampoLabelStyle}"/>
+					<Label x:Name="lblCorreo" Style="{StaticResource ValorLabelStyle}"/>
+				</VerticalStackLayout>
+			</Frame>
+
+			<!-- Tarjeta de información salarial -->
+			<Frame Style="{StaticResource CardStyle}">
+				<VerticalStackLayout>
+					<Label Text="Información Salarial" Style="{StaticResource AporteTituloStyle}"/>
+
+					<Label Text="Salario Mensual:" Style="{StaticResource CampoLabelStyle}"/>
+					<Label x:Name="lblSalario" Style="{StaticResource ValorLabelStyle}"/>
+				</VerticalStackLayout>
+			</Frame>
+
+			<!-- Tarjeta de aporte al IESS -->
+			<Frame Style="{StaticResource AporteFrameStyle}">
+				<VerticalStackLayout>
+					<Label Text="Aporte al IESS (9.45%)" Style="{StaticResource AporteTituloStyle}"/>
+					<Label x:Name="lblAporteIESS" Style="{StaticResource AporteValorStyle}"/>
+				</VerticalStackLayout>
+			</Frame>
+
+			<!-- Botón de exportar -->
+			<Button
+                x:Name="btnExportar"
+                Text="Exportar a Archivo de Texto"
+                Style="{StaticResource BotonStyle}"
+                Clicked="btnExportar_Clicked"
+                Margin="0,20,0,20"/>
+		</VerticalStackLayout>
+	</ScrollView>
 </ContentPage>

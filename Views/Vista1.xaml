@@ -2,63 +2,115 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="jgarcesT3.Views.Vista1"
-             Title="Vista1">
-    <ContentPage.Resources>
-        <Style x:Key="estilolabel" TargetType="Label">
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="TextColor" Value="Blue"/>
-            <Setter Property="HorizontalTextAlignment" Value="Center"/>
-        </Style>
-    </ContentPage.Resources>
-    <VerticalStackLayout Spacing="20" Padding="20">
-        <Label 
-            Text="Taller Semana 3"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center"
-            FontSize="20"
-            TextColor="Red"/>
+             Title="Registro de Contacto">
 
-        <Picker
-            x:Name="pkid"
-            Title="Seleccione su tipo de identificación">
-            <Picker.Items>
-                <x:String>CI</x:String>
-                <x:String>RUC</x:String>
-                <x:String>Pasaporte</x:String>
-            </Picker.Items>
-        </Picker>
+	<!-- Recursos y Estilos Implícitos -->
+	<ContentPage.Resources>
+		<!-- Estilo implícito para todos los Entry -->
+		<Style TargetType="Entry">
+			<Setter Property="FontSize" Value="16" />
+			<Setter Property="TextColor" Value="DarkBlue" />
+			<Setter Property="Margin" Value="0,5,0,5" />
+		</Style>
 
-        <Entry x:Name="txtidentificacion"
-               Placeholder="Ingrese su identificación"
-               TextChanged="txtidentificacion_TextChanged"/>
+		<!-- Estilo implícito para todos los Label -->
+		<Style TargetType="Label">
+			<Setter Property="FontSize" Value="16" />
+			<Setter Property="TextColor" Value="DarkSlateBlue" />
+			<Setter Property="FontAttributes" Value="Bold" />
+			<Setter Property="Margin" Value="0,5,0,0" />
+		</Style>
 
-        <Entry x:Name="txtnombre"
-               Placeholder="Ingrese su nombre"/>
+		<!-- Estilo implícito para todos los Picker -->
+		<Style TargetType="Picker">
+			<Setter Property="FontSize" Value="16" />
+			<Setter Property="TextColor" Value="DarkBlue" />
+			<Setter Property="Margin" Value="0,5,0,5" />
+		</Style>
 
-        <Entry x:Name="txtapellido"
-               Placeholder="Ingrese su apellido"/>
+		<!-- Estilo implícito para el DatePicker -->
+		<Style TargetType="DatePicker">
+			<Setter Property="FontSize" Value="16" />
+			<Setter Property="TextColor" Value="DarkBlue" />
+			<Setter Property="Margin" Value="0,5,0,5" />
+		</Style>
 
+		<!-- Estilo implícito para el Button -->
+		<Style TargetType="Button">
+			<Setter Property="FontSize" Value="16" />
+			<Setter Property="TextColor" Value="White" />
+			<Setter Property="BackgroundColor" Value="RoyalBlue" />
+			<Setter Property="Margin" Value="0,10,0,0" />
+			<Setter Property="CornerRadius" Value="10" />
+			<Setter Property="Padding" Value="10" />
+		</Style>
+	</ContentPage.Resources>
 
-        <Label 
-                Text="Fecha de Registro"
-                Grid.Row="0"
-                Grid.Column="0"/>
+	<ScrollView>
+		<VerticalStackLayout Spacing="10" Padding="20">
+			<!-- Título -->
+			<Label
+                Text="Registro de Contactos"
+                FontSize="24"
+                TextColor="RoyalBlue"
+                HorizontalOptions="Center"
+                Margin="0,0,0,20"/>
 
-        <DatePicker
-               x:Name="pkfecha"
-               Format="dd/MM/yyyy"
-               Grid.Row="0"
-               Grid.Column="1"/>
+			<!-- Sección de identificación -->
+			<Label Text="Tipo de Identificación"/>
+			<Picker
+                x:Name="pkid"
+                Title="Seleccione su tipo de identificación">
+				<Picker.Items>
+					<x:String>CI</x:String>
+					<x:String>RUC</x:String>
+					<x:String>Pasaporte</x:String>
+				</Picker.Items>
+			</Picker>
 
-        <Entry x:Name="txtcorreo"
-               Placeholder="Ingrese su correo"/>
+			<Label Text="Número de Identificación"/>
+			<Entry
+                x:Name="txtidentificacion"
+                Placeholder="Ingrese su identificación"
+                TextChanged="txtidentificacion_TextChanged"/>
 
-        <Entry x:Name="txtsalario"
-               Placeholder="Ingrese su salario"/>
+			<!-- Sección de datos personales -->
+			<Label Text="Nombres"/>
+			<Entry
+                x:Name="txtnombre"
+                Placeholder="Ingrese sus nombres"/>
 
-        <Button x:Name="btnGuardar"
-                Text="Mostrar Contacto Registrado"
-                Clicked="btnGuardar_Clicked"/>
+			<Label Text="Apellidos"/>
+			<Entry
+                x:Name="txtapellido"
+                Placeholder="Ingrese sus apellidos"/>
 
-    </VerticalStackLayout>
+			<!-- Fecha de registro -->
+			<Label Text="Fecha de Registro"/>
+			<DatePicker
+                x:Name="pkfecha"
+                Format="dd/MM/yyyy"/>
+
+			<!-- Correo y Salario -->
+			<Label Text="Correo Electrónico"/>
+			<Entry
+                x:Name="txtcorreo"
+                Placeholder="Ingrese su correo electrónico"
+                Keyboard="Email"/>
+
+			<Label Text="Salario Mensual"/>
+			<Entry
+                x:Name="txtsalario"
+                Placeholder="Ingrese su salario"
+                Keyboard="Numeric"
+				TextChanged="txtsalario_TextChanged"/>
+
+			<!-- Botón de guardado -->
+			<Button
+                x:Name="btnGuardar"
+                Text="Ver Información de Contacto"
+                Clicked="btnGuardar_Clicked"
+                Margin="0,20,0,20"/>
+		</VerticalStackLayout>
+	</ScrollView>
 </ContentPage>
